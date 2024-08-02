@@ -13,7 +13,7 @@ public class ClienteImpl implements ICliente {
     @Autowired
     private ClienteDao clienteDao;
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Cliente save(Cliente cliente) {
         return clienteDao.save(cliente);
