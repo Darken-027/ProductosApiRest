@@ -17,7 +17,7 @@ package com.pz.controller;
         @PostMapping("cliente")
         @ResponseStatus(HttpStatus.CREATED)
         public Cliente create(@RequestBody Cliente cliente){
-            return clienteService.save(cliente);
+            return clienteService.save(cliente.getIdCliente());
         }
 
         @PutMapping("cliente")
