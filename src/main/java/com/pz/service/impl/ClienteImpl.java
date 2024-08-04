@@ -1,7 +1,7 @@
 package com.pz.service.impl;
 
 import com.pz.model.dao.ClienteDao;
-import com.pz.model.entity.Cliente;
+import com.pz.model.dto.ClienteDto;
 import com.pz.service.ICliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,17 +15,17 @@ public class ClienteImpl implements ICliente {
 
     @Transactional(readOnly = true)
     @Override
-    public Cliente save(Cliente cliente) {
+    public ClienteDto save(ClienteDto cliente) {
         return clienteDao.save(cliente);
     }
 
     @Override
-    public Cliente findById(Integer id) {
+    public ClienteDto findById(Integer id) {
         return clienteDao.findById(id).orElse(null);
     }
 
     @Override
-    public void delete(Cliente cliente) {
+    public void delete(ClienteDto cliente) {
         clienteDao.delete(cliente);
     }
 }

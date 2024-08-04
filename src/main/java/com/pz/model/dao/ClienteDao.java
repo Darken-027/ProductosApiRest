@@ -1,7 +1,7 @@
 package com.pz.model.dao;
 
-import com.pz.model.entity.Cliente;
+import com.pz.model.dto.ClienteDto;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ClienteDao extends CrudRepository<Cliente, Integer> {
+public interface ClienteDao extends CrudRepository<ClienteDto, Integer> {
 }

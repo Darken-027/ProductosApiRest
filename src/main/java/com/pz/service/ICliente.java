@@ -1,12 +1,12 @@
 package com.pz.service;
 
-import com.pz.model.entity.Cliente;
+import com.pz.model.dto.ClienteDto;
 
 public interface ICliente {
 
-    Cliente save(Cliente cliente);
+    ClienteDto save(ClienteDto cliente);
 
-    Cliente findById(Integer id);
+    ClienteDto findById(Integer id);
 
-    void delete(Cliente cliente);
+    void delete(ClienteDto cliente);
 }

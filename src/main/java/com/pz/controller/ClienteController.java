@@ -1,7 +1,7 @@
 package com.pz.controller;
 
 
-    import com.pz.model.entity.Cliente;
+    import com.pz.model.dto.ClienteDto;
     import com.pz.service.ICliente;
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.dao.DataAccessException;
@@ -21,13 +21,13 @@ package com.pz.controller;
 
         @PostMapping("cliente")
         @ResponseStatus(HttpStatus.CREATED)
-        public Cliente create(@RequestBody Cliente cliente){
+        public ClienteDto create(@RequestBody ClienteDto cliente){
             return clienteService.save(cliente);
         }
 
         @PutMapping("cliente")
         @ResponseStatus(HttpStatus.CREATED)
-        public Cliente update(@RequestBody Cliente cliente){
+        public ClienteDto update(@RequestBody ClienteDto cliente){
             return clienteService.save(cliente);
         }
 
@@ -35,19 +35,19 @@ package com.pz.controller;
         public ResponseEntity<?> delete(@PathVariable Integer id){
             Map<String, Object> response = new HashMap<>();
              try {
-                 Cliente clienteDelete = clienteService.findById(id);
+                 ClienteDto clienteDelete = clienteService.findById(id);
                  clienteService.delete(clienteDelete);
                  return  new ResponseEntity<>(clienteDelete, HttpStatus.NO_CONTENT);
              }catch (DataAccessException exDt){
                  response.put("mensaje", exDt.getMessage());
                  response.put("cliente", null);
-                 return  new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+                 return  new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
              }
         }
 
         @GetMapping("cliente/{id}")
         @ResponseStatus(HttpStatus.OK)
-        public Cliente showById(@PathVariable Integer id){
+        public ClienteDto showById(@PathVariable Integer id){
             return clienteService.findById(id);
         }
     }
